@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Working with Attributes</h2>
+<img id="image"
+src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR59W9dUZ_nCUUW0wdMV1x-GjO8KHZytypgeL_rYFMhuphSwJa0Z8mARfd7&s=10"
+     width="300"
+     alt="Nature Image">
+<br><br>
+<button onclick="getAttr()">Get Attribute</button>
+<button onclick="setAttr()">Set Attribute</button>
+<button onclick="removeAttr()">Remove Attribute</button>
+<script>
+function getAttr() {
+    let img = document.getElementById("image");
+    console.log("Image Source:", img.getAttribute("src"));
+    console.log("Image Width:", img.getAttribute("width"));
+    console.log("Alt Text:", img.getAttribute("alt"));
+
+}
+function setAttr() {
+    let img = document.getElementById("image");
+    img.setAttribute("src","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR59W9dUZ_nCUUW0wdMV1x-GjO8KHZytypgeL_rYFMhuphSwJa0Z8mARfd7&s=10");
+    img.setAttribute("width", "500");
+    img.setAttribute("alt", "Flower Image");
+    alert("Attributes Updated");
+
+}
+function removeAttr() {
+    let img = document.getElementById("image");
+    img.removeAttribute("width");
+    alert("Width Attribute Removed");
+}
+</script>
+</body>
+</html>
