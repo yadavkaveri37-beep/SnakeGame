@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Delete Student</h2>
+
+<form id="deleteForm">
+
+    Student Id:
+
+    <input type="number" id="deleteId">
+
+    <button type="submit">Delete</button>
+
+</form>
+
+<script>
+
+document.getElementById("deleteForm").addEventListener("submit",deleteStudent);
+
+function deleteStudent(event){
+
+    event.preventDefault();
+
+    let id=document.getElementById("deleteId").value;
+
+    fetch("http://localhost:8081/students/"+id,{
+
+        method:"DELETE"
+
+    })
+
+    .then(()=>{
+
+        alert("Student Deleted Successfully");
+
+    })
+
+    .catch(error=>console.log(error));
+
+}
+
+</script>
+</body>
+</html>
