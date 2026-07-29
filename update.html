@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Update Student</h2>
+
+<form id="updateForm">
+
+    Id:
+    <input type="number" id="uid"><br><br>
+
+    Name:
+    <input type="text" id="uname"><br><br>
+
+    Email:
+    <input type="email" id="uemail"><br><br>
+
+    Course:
+    <input type="text" id="ucourse"><br><br>
+
+    Age:
+    <input type="number" id="uage"><br><br>
+
+    <button type="submit">Update Student</button>
+
+</form>
+
+<script>
+
+document.getElementById("updateForm").addEventListener("submit",updateStudent);
+
+function updateStudent(event){
+
+    event.preventDefault();
+
+    let id=document.getElementById("uid").value;
+
+    let student={
+
+        name:document.getElementById("uname").value,
+        email:document.getElementById("uemail").value,
+        course:document.getElementById("ucourse").value,
+        age:document.getElementById("uage").value
+
+    };
+
+    fetch("http://localhost:8081/students/"+id,{
+
+        method:"PUT",
+
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify(student)
+
+    })
+
+    .then(response=>response.json())
+
+    .then(data=>{
+
+        alert("Student Updated Successfully");
+
+        console.log(data);
+
+    })
+
+    .catch(error=>console.log(error));
+
+}
+
+</script>
+</body>
+</html>
