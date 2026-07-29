@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OTP Generator</title>
+    <style>
+        body{
+            font-family: Arial;
+            text-align:center;
+            margin-top:50px;
+        }
+
+        input{
+            padding:10px;
+            width:220px;
+            margin:10px;
+        }
+
+        button{
+            padding:10px 20px;
+        }
+
+        #otp{
+            color:green;
+            font-size:20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>OTP Verification</h2>
+
+<input type="text" id="mobile" placeholder="Enter Mobile Number">
+<br>
+
+<button onclick="generateOTP()">Generate OTP</button>
+
+<h3 id="otp"></h3>
+
+<input type="text" id="userOtp" placeholder="Enter OTP">
+
+<br>
+
+<button onclick="verifyOTP()">Verify OTP</button>
+
+<h2 id="result"></h2>
+
+<script>
+
+let generatedOTP="";
+
+function generateOTP(){
+
+    generatedOTP=Math.floor(100000+Math.random()*900000);
+
+    document.getElementById("otp").innerHTML=
+    "Generated OTP : "+generatedOTP;
+
+}
+
+function verifyOTP(){
+
+    let enteredOTP=document.getElementById("userOtp").value;
+
+    if(enteredOTP==generatedOTP){
+
+        document.getElementById("result").innerHTML=
+        "✅ OTP Verified Successfully";
+
+    }else{
+
+        document.getElementById("result").innerHTML=
+        "❌ Invalid OTP";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
